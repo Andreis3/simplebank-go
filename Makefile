@@ -23,4 +23,6 @@ test-cover:
 server:
 	go run main.go
 
-.PHONY: postgres createdb dropdb migrateup migratedown sqlc test test-cover server
+mock:
+	mockgen -destination db/mock/store.go github.com/andreis3/simplebank-go/db/sqlc Store
+.PHONY: postgres createdb dropdb migrateup migratedown sqlc test test-cover server mock
